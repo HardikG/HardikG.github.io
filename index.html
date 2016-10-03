@@ -13,6 +13,8 @@
 	<link rel="stylesheet" type="text/css" href="css/tooltip.css">
 	<link rel="stylesheet" type="text/css" href="css/lightbox.css">
 	<link id="main" rel="stylesheet" type="text/css" href="css/publisher.css">
+	<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 </head>
 <body>
 <div id="wrapper" class="behind">
@@ -335,7 +337,7 @@
 					hardikgiri.goswami@gmail.com</h4>
 				</div>
 			</div>
-			<form action="php/newMail.php" method="post" class="mail-form">
+			<form action="mailto:hardikgiri.goswami@gmail.com" method="post" class="mail-form">
 				<div class="col-md-6">
 					<div class="row">
 						<div class="col-sm-6">
@@ -362,6 +364,36 @@
 					</div>
 				</div>
 			</form>
+
+<script>
+   var form = document.getElementsByTagName('form')[0];
+   form.addEventListener('submit',contact,false);
+   function contact(e) {
+      // Prevent Default Form Submission
+      e.preventDefault();
+
+      var target = e.target || e.srcElement;
+      var i = 0;
+      var message = '';
+
+      // Loop Through All Input Fields
+      for(i = 0; i < target.length; ++i) {
+         // Check to make sure it's a value. Don't need to include Buttons
+         if(target[i].type != 'text' && target[i].type != 'textarea') {
+                // Skip to next input since this one doesn't match our rules
+            continue;
+         }
+
+         // Add Input Name and value followed by a line break
+         message += target[i].name + ': ' + target[i].value + "\r\n";
+      }
+      // Modify the hidden body input field that is required for the mailto: scheme
+      target.elements["body"].value = message;
+
+      // Submit the form since we previously stopped it. May cause recursive loop in some browsers? Should research this.
+      this.submit();
+   }
+</script>
 		</div>
 	</div>
 </section>
