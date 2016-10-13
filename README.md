@@ -7,4 +7,3 @@
 * Odoo Web View Creation
 * Odoo Java Script
 
-### For more detail visit [hardikg.github.io](https://hardikg.github.io) ###
